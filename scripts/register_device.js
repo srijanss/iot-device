@@ -4,6 +4,8 @@ var Simulator = require('./simulator');
 
 var simulate = new Simulator();
 
+simulate.timer();
+
 var api = 'device';
 var payload = {
 	"location": "vaajakatu",
