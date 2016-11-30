@@ -10,7 +10,7 @@ var inherits = require('inherits');
 
 var defaultOptions = {
 	host: 'localhost',
-	port: '10010',
+	port: '10011',
 }
 
 
@@ -37,6 +37,7 @@ Simulator.prototype.get = function(api) {
 	var that = this;
 	rest.get(this.URI + api).on('200', result => {
 		that.RESPONSE = result;
+		console.log(result);
 		that.emit('get_success');
 		// console.log(that.DEVICES);
 	});

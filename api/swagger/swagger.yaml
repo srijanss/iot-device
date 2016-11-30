@@ -34,10 +34,88 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /app/install:
+    x-swagger-router-controller: controlapp
+    post:
+      description: Install app in device
+      # used as the method name of the controller
+      operationId: installapp
+      parameters:
+        - name: title
+          in: body
+          description: App details
+          required: true
+          schema:
+            $ref: "#/definitions/AppDetails"
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/GetImageResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /app/delete/{imageid}:
+    x-swagger-router-controller: controlapp
+    delete:
+      description: Deletes app in device
+      # used as the method name of the controller
+      operationId: deleteapp
+      parameters:
+        - name: imageid
+          in: path
+          type: string
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/GeneralResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
+  GeneralResponse:
+    type: object
+    properties:
+      success:
+        type: number
+        description: returns 1 if successful
+      description:
+        type: string
+        description: a short comment
+    required:
+      - success
+      - description
+  GetImageResponse:
+    type: object
+    properties:
+      imageid:
+        type: string
+        description: ID of Image
+      status:
+        type: string
+        description: Status of the Image
+    required: 
+      - imageid
+      - status
+  AppDetails:
+    type: object
+    properties:
+      image:
+        type: string
+        description: Docker image name
+    required:
+      - image
   GetTempResponse:
     required:
       - temp

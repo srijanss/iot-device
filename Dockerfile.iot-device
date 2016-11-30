@@ -1,0 +1,7 @@
+FROM srijanss/iot-paas:latest
+
+COPY . /usr/src/app
+
+EXPOSE 10010
+
+CMD ["swagger", "project", "start"]

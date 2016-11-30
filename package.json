@@ -10,6 +10,7 @@
   "dependencies": {
     "command-line-args": "^3.0.2",
     "express": "^4.12.3",
+    "inherits": "^2.0.3",
     "swagger-express-mw": "^0.1.0"
   },
   "devDependencies": {
