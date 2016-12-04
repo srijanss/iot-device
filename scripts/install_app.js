@@ -3,14 +3,16 @@
 var Simulator = require('./simulator');
 var options = {
  host: 'localhost',
- port: '10012',
+ port: '10011',
+ rrhost: 'localhost',
+ rrport: '10010',
 };
 var simulate = new Simulator(options);
 
-var image = {image: 'srijanss/gettempapp'}
+var image = {image: 'srijanss/gettempapp'};
 
-if(process.argv.length < 3){
-	simulate.install_app('app', 'install', image);
+if(process.argv.length < 4){
+	simulate.install_app('app/install', process.argv[2], image);
 } else {
-	simulate.delete_app('app', 'delete', process.argv[2]);
+	simulate.delete_app('app/delete', process.argv[2], process.argv[3]);
 }

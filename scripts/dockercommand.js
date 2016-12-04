@@ -108,14 +108,14 @@ DockerCommand.prototype.remove_image = function(imageid){
 	
 };
 
-DockerCommand.prototype.reset = function(imagename) {
-	exec('docker restart $(docker ps -qf ancestor=' + imagename + ')', (error, stdout, stderr) => {
-		if(error !== null) {
-			console.log("error: " + error);
-		} else {
-			this.emit('restarted');
-		}
-	});
-}
+// DockerCommand.prototype.reset = function(imagename) {
+// 	exec('docker restart $(docker ps -qf ancestor=' + imagename + ')', (error, stdout, stderr) => {
+// 		if(error !== null) {
+// 			console.log("error: " + error);
+// 		} else {
+// 			this.emit('restarted');
+// 		}
+// 	});
+// }
 
 module.exports = DockerCommand;

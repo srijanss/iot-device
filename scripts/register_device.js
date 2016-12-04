@@ -2,7 +2,12 @@
 
 var Simulator = require('./simulator');
 
-var simulate = new Simulator();
+var options = {
+	host: 'localhost',
+	port: '10010',
+}
+
+var simulate = new Simulator(options);
 
 simulate.timer();
 

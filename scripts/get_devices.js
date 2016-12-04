@@ -21,15 +21,24 @@ const optionsDefinitions = [
 
 const options = Args(optionsDefinitions);
 
-var simulate = new Simulator();
+if(options.api === 'device'){
+	var conn_options = {
+		'host': 'localhost',
+		'port': 10010,
+	}
+	var simulate = new Simulator(conn_options);
+} else {
+	var simulate = new Simulator()
+}
 
 simulate.timer();
+var api = options.api;
 
-if(options.api){
-	var api = options.api;
-} else {
-	var api = 'device';
-}
+// if(options.api){
+// 	var api = options.api;
+// } else {
+// 	var api = 'device';
+// }
 if (options.deviceid) {
 	var param = options.deviceid;
 	var deviceID = param;
@@ -53,6 +62,7 @@ if(options.applist){
 	});
 }
 if(options.listdevices){
+	// console.log('DEBUG: listdevice ' + api);
 	simulate.get_devices(api);
 } else if(options.listapps) {
 	simulate.get_device_apps(api, param);
