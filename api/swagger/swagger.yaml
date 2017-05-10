@@ -114,6 +114,9 @@ definitions:
       image:
         type: string
         description: Docker image name
+      # version:
+      #   type: string
+      #   description: Docker image version
     required:
       - image
   GetTempResponse:

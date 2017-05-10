@@ -28,7 +28,11 @@ if(options.api === 'device'){
 	}
 	var simulate = new Simulator(conn_options);
 } else {
-	var simulate = new Simulator()
+	var conn_options = {
+		'host': 'localhost',
+		'port': 10040,
+	};
+	var simulate = new Simulator(conn_options);
 }
 
 simulate.timer();
