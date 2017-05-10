@@ -1,0 +1,9 @@
+docker ps // list running containers 
+docker ps -a -q // list all containers ID
+docker images // list all images
+docker images imagename -q // list ID of given image
+docker build -t imagename . // build image with given tag name
+docker run -p 10010:10011 imagename // run given image 
+docker stop $(docker ps -a -q) // stop all containers
+docker rm $(docker ps -a -q) // remove all containers
+docker run -v /var/run/docker.sock:/var/run/docker.sock -p 10011:10010 srijanss/iot-device
