@@ -81,7 +81,7 @@ Simulator.prototype.delete = function(api) {
 Simulator.prototype.get_devices = function(api) {
 	this.get(api);
 	this.once('get_success', () =>{
-		console.log(this.RESPONSE);
+		//console.log(this.RESPONSE);
 		this.emit('log_time');
 	});
 }
