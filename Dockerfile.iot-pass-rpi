@@ -1,11 +1,15 @@
-FROM fstehle/rpi-node:4
+FROM resin/rpi-raspbian
 
-RUN [ "cross-build-start" ]
-
-# Install curl and docker
+# Install curl , node and docker
 RUN apt-get update && apt-get install curl
 
 RUN curl -sSL https://get.docker.com/ | sh
+
+RUN apt-get update && apt-get install docker
+
+RUN curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+
+RUN apt-get install nodejs
 
 #Create app directory
 RUN mkdir -p /usr/src/app
@@ -18,8 +22,6 @@ COPY package.json /usr/src/app
 RUN npm install -g swagger
 
 RUN npm install
-
-RUN [ "cross-build-end" ]
 
 #COPY . /usr/src/app
 
